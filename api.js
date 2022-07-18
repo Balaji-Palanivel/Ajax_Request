@@ -1,39 +1,52 @@
-sample = {"J. K. Rowling":"0","Marjorie Rowling":"1","Nick Rowling":"2","Louise Rowling":"3","W. E. Rowling":"4","Sheryl L. Rowling":"5","John R. Rowling":"6","Michael Rowling Hawkesworth":"7","Amy Rowling":"8","J.Thompson Rowling":"9","C. W. Rowling":"10","Noël Rowling":"11","Dr. Xavier Joss Rowling":"12","Mary J Rowling":"13","P.W. and Lang Noella Rowling":"14","Charles Rowling":"15","Matthew Rowling":"16","Cathy Rowling":"17","Marije Rowling":"18","Sarah Rowling":"19","Edwina Rowling":"20","J K Rowling":"21","ROWLING":"22","J.K . Rowling":"23","James Rowling":"24","J.K. Rowling":"25"}		
-		
-		
 		function fun()
-				{
+				{				 
 				 let x = document.getElementById("cc").value;
-				 var y = sample[x]
-				 console.log(y);
-		function ajaxCall() {
+				 let u ='https://openlibrary.org/search/authors.json?q=';
+				 let URL = u+x;				
+				 ajaxCall(URL);
+				 }
+		function ajaxCall(URL) {
 			$.ajax({
 			       
-				url:'https://openlibrary.org/search/authors.json?q=rowling',
+				url: URL ,
 				type: "GET",
 				success: function (data) {
 				
 				let temp  = "";	
-				 			 
+				temp += "<tr>";
+						temp += "<td>"+ "#" +"</td>";
+						temp += "<td>" +"NAME"+ "</td>";
+						temp += "<td>" +"TYPE"+ "</td>";
+						temp += "<td>" +"BIRTH DATE"+ "</td>";
+						temp += "<td>" +"WORK COUNT"+ "</td>";
+						temp += "<td>" +"TOP SUBJECTS"+ "</td>";
+						temp += "<td>" +"VERSION"+ "</td></tr>";
+							 
 					for (const [key, value] of Object.entries(data))
-					{		
-					   if (key == "docs"){
+					{	
+					  if (key == "numFound" && value == 0)
+					  {
 					   
+		  			     document.getElementById("msg").innerHTML = "No Author's are available in this name ";
+					  }	
+					  else{
+					   if (key == "docs")
+					   {
+					   
+					   for (var i=0;i<value.length;i++)
+					   {   						
 					      	temp += "<tr>";
-						temp += "<td>"+ "TYPE" +"</td>";	
-						temp += "<td>"+ value[y]["type"] +"</td></tr>";
-						temp += "<tr>";
-						temp += "<td>"+ "NAME" +"</td>";	
-						temp += "<td>"+ value[y]["name"] +"</td></tr>";						
-						temp += "<tr>";
-						temp += "<td>"+ "BIRTH DATE" +"</td>";	
-						temp += "<td>"+ value[y]["birth_date"] +"</td></tr>";
-						temp += "<tr>";
-						temp += "<td>"+ "VERSION" +"</td>";	
-						temp += "<td>"+ value[y]["_version_"] +"</td></tr>";
-					
+					      	temp += "<th>"+ i +"</th>";
+						temp += "<td>"+ value[i]["name"] +"</td>";	
+						temp += "<td>"+ value[i]["type"] +"</td>";
+						temp += "<td>"+ value[i]["birth_date"] +"</td>";
+						temp += "<td>"+ value[i]["work_count"] +"</td>";
+						temp += "<td>"+ value[i]["top_subjects"] +"</td>";
+						temp += "<td>"+ value[i]["_version_"] +"</td></tr>";												
+					  }  
 						}		
-					 }
+					}
+					}
 			
 				document.getElementById("data").innerHTML = temp;	
 										
@@ -46,11 +59,4 @@ sample = {"J. K. Rowling":"0","Marjorie Rowling":"1","Nick Rowling":"2","Louise 
 				}
 			});
 		}
-		ajaxCall();
-				 				 
-				}
-		
-				
-
-		
-	
+				 				 	
