@@ -1,134 +1,135 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-	<link rel="stylesheet" href="api.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript" src="api.js"></script>  
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
-	
+    <link rel="stylesheet" href="api.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="api.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+
 </head>
-<body onload="myFunction()">
-<br><br>
 
-<!---------------------------------------------------------------------- Search Box ----------------------------------------------->
+<body onload="fun()">
+    <br><br>
 
-<center> 
-	<div class="row">
-		<div class="col-sm-2">
-			<a href="api.html"  class="next round x">Back</a>
-		</div>
-		  <div class="col-sm-8">
-			<div class="search">			
-			 <i class="fa fa-search"></i>
-			  <input type="text" id="cc" class="form-control" placeholder="Search..">
-			  <button onclick="fun()" class="btn btn-primary ">Search</button>
-			  
-			</div>			
-		  </div>		  
-		</div>	
-	
-</center>
-<br><br>
-<br><br>
+    <!---------------------------------------------------------------------- Search Box ----------------------------------------------->
+
+    <center>
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="api.html" class="next round x">Back</a>
+            </div>
+            <div class="col-sm-8">
+                <div class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" id="cc" class="form-control" placeholder="Search..">
+                    <button onclick="fun(), myfunction()" class="btn btn-primary ">Search</button>
+
+                </div>
+            </div>
+        </div>
+
+    </center>
+    <br><br>
+    <br><br>
 
 
-<!---------------------------------------------------------------------- Author's Data ----------------------------------------------->
+    <!---------------------------------------------------------------------- Author's Data ----------------------------------------------->
 
-<div  id="loading" >
-	<div class="centerdiv" >
-	<img src="https://acegif.com/wp-content/uploads/loading-25.gif" style="width:50px;height:50px;">
-</div>
-</div>
-	
-<div class="container">
-<table  class="table table-hover table-dark" >
+    <div id="loading">
+        <div class="centerdiv">
+            <img src="https://acegif.com/wp-content/uploads/loading-25.gif" style="width:50px;height:50px;">
+        </div>
+    </div>
 
-	<tbody id="data">
-	
-	</tbody>
-</table>
-</div>
-<center><p id="msg" ></p></center>
-<br><br><br><br><br><br>
-<!---------------------------------------------------------------------- Author profile----------------------------------------------->
-<div id="author" class="container" style="width:1500px;height:800px">
-<center>
-    <div class="page-content page-container" id="page-content">
-        <div class="padding">
-            <div class="row container d-flex justify-content-center">
-    <div class="col-xl-9 ">
-                                                    <div class="card user-card-full">
-                                                        <div class="row m-l-0 m-r-0 mb-100">
-                                                            <div class="col-sm-4 bg-c-lite-green user-profile">
-                                                                <div class="card-block text-center text-white">
-                                                                    <div class="m-b-25">
-                                                                        <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                                                    </div>
-                                                                    <h6 id="name" class="f-w-600">Author's Name</h6>
-                                                                    <p id="type">Type</p>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <div class="card-block">
-                                                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Author's Information</h6>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-4">
-                                                                            <p class="m-b-5 f-w-600">Work Count</p>
-                                                                            <h6 id="work_count" class="text-muted f-w-400">--</h6>
-                                                                        </div>
-                                                                        <div class="col-sm-4">
-                                                                            <p class="m-b-5 f-w-600">Version</p>
-                                                                            <h6 id="_version_" class="text-muted f-w-400">--</h6>
-                                                                        </div>
-                                                                        <div class="col-sm-4">
-                                                                            <p class="m-b-5 f-w-600">Birth Date</p>
-                                                                            <h6 id="birth_date" class="text-muted f-w-400">--</h6>
-                                                                        </div>
-                                                                    </div><br><br>                                                      
-                                                                    
-                                                                       
-                                                                    <div class="row">
-                                                                        <div class="col-sm-4">
-                                                                            <p class="m-b-5 f-w-600">Top Work</p>
-                                                                            <h6 id="top_work" class="text-muted f-w-400">--</h6>
-                                                                        </div>
-                                                                    </div>
-                                  
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+    <div id="table" class="container">
+        <table class="table table-hover table-dark">
+
+            <tbody id="data">
+
+            </tbody>
+        </table>
+    </div>
+    <center>
+        <p id="msg"></p>
+    </center>
+    <br><br><br><br><br><br>
+    <!---------------------------------------------------------------------- Author profile----------------------------------------------->
+    <div id="author" id="boxPopup" class="container ">
+        <center>
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+                        <div class="col-xl-9 ">
+                            <div class="card user-card-full">
+                                <div class="row m-l-0 m-r-0 mb-100">
+                                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25">
+                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png"
+                                                    class="img-radius" alt="User-Profile-Image">
+                                            </div>
+                                            <h6 id="name" class="f-w-600">Author's Name</h6>
+                                            <p id="type">Type</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Author's Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="m-b-5 f-w-600">Work Count</p>
+                                                    <h6 id="work_count" class="text-muted f-w-400">--</h6>
                                                 </div>
-                                                 </div>
-                                                    </div>
-                                            </div></center>    
-										</div>                                           
-										<div class="col-sm-2">
-											<button onclick="history.back()" class="x" id="myBtn">Go top</button>
-											
-										</div>	
-										
-										<script>
-											 //$(document).ready(function(){
-												 	$('div#loading').removeAttr('id');
-											});
-											var preloader = document.getElementById("loading");
-											window.addEventListener('load', function(){
-											preloader.style.display = 'none';
-												})
-									
-											//function myFunction(){
-												preloader.style.display = 'none';
-											};
-										</script>
+                                                <div class="col-sm-4">
+                                                    <p class="m-b-5 f-w-600">Version</p>
+                                                    <h6 id="_version_" class="text-muted f-w-400">--</h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="m-b-5 f-w-600">Birth Date</p>
+                                                    <h6 id="birth_date" class="text-muted f-w-400">--</h6>
+                                                </div>
+                                            </div><br><br>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="m-b-5 f-w-600">Top Work</p>
+                                                    <h6 id="top_work" class="text-muted f-w-400">--</h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+    <div class="col-sm-2">
+        <button onclick="history.back()" class="x" id="myBtn">Go top</button>
+
+    </div>
+
+    <script>
+      
+    </script>
 </body>
+
 </html>

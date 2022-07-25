@@ -1,118 +1,133 @@
-		
-		function fun()
-				{
-				 let x = document.getElementById("cc").value;				 
-				 if (x === ""){alert("Plase give some name for search");}
-				 else{
-				 let u ='https://openlibrary.org/search/authors.json?q=';
-				 let URL = u+x;
-				 ajaxCall(URL);}
-				}
+
+function fun() {
+	let x = document.getElementById("cc").value;
+	if (x === "") { alert("Plase give some name for search"); }
+	else {
+		let u = 'https://openlibrary.org/search/authors.json?q=';
+		let URL = u + x;
+		ajaxCall(URL);
+
+	}
+}
 
 //-----------------------------------------------------------------------------------------------------
 
-		function ajaxCall(URL) {
-			$.ajax({
+function ajaxCall(URL) {
+	$.ajax({
 
-				url: URL ,
-				type: "GET",
-				success: function (data) {			
-						
-				let temp  = "";
+		url: URL,
+		type: "GET",
+		success: function (data) {
 
-				temp += "<tr>";
-				temp += "<td>"+ "S.No" +"</td>";
-				temp += "<td>" +"NAME"+ "</td>";
-				temp += "<td>" +"TYPE"+ "</td>";
-				temp += "<td>" +"BIRTH DATE"+ "</td>";
-				temp += "<td>" +"WORK COUNT"+ "</td>";
-				temp += "<td>" +"TOP SUBJECTS"+ "</td></tr>";
-							 
-	     for (const [key, value] of Object.entries(data))
-		{	
-		    if (key == "numFound" && value == 0){document.getElementById("msg").innerHTML = "No Author's are available in this name "; }	
+			let temp = "";
 
-			else{
-				if (key == "docs")   {
-					   
-				for (var i=0;i<value.length;i++) {
-                            
-					      	temp += "<tr>";
-					      	temp += "<th>"+ i +"</th>";												       				      	
-					        temp += "<td id ="+value[i]['name']+" onClick=fun2(this)> <a href='#author'>"+ value[i]["name"] + "</a></td>"; 					        
-						    temp += "<td>"+ value[i]["type"] +"</td>";
-						    if( value[i]["birth_date"] === undefined){temp +="<td>"+ "--" +"</td>";}else{temp += "<td>"+ value[i]["birth_date"] +"</td>";}
-						    temp += "<td>"+ value[i]["work_count"] +"</td>";
-						    if( value[i]["top_subjects"] === undefined){temp +="<td>"+ "--" +"</td>";}else{temp += "<td>"+ value[i]["top_subjects"] +"</td></tr>";}
-                             
-					                            }
+			temp += "<tr>";
+			temp += "<td>" + "S.No" + "</td>";
+			temp += "<td>" + "NAME" + "</td>";
+			temp += "<td>" + "TYPE" + "</td>";
+			temp += "<td>" + "BIRTH DATE" + "</td>";
+			temp += "<td>" + "WORK COUNT" + "</td>";
+			temp += "<td>" + "TOP SUBJECTS" + "</td></tr>";
 
-				         }
-			 }
+			for (const [key, value] of Object.entries(data)) {
+				if (key == "numFound" && value == 0) { document.getElementById("msg").innerHTML = "No Author's are available in this name "; }
 
-		}
-				
-				document.getElementById("data").innerHTML = temp;
+				else {
+					if (key == "docs") {
 
-				},
+						for (var i = 0; i < value.length; i++) {
 
+							temp += "<tr>";
+							temp += "<th>" + i + "</th>";
+							temp += "<td id =" + value[i]['name'] + " onClick=fun2(this),openPopup()> <a href='#author'>" + value[i]["name"] + "</a></td>";
+							temp += "<td>" + value[i]["type"] + "</td>";
+							if (value[i]["birth_date"] === undefined) { temp += "<td>" + "--" + "</td>"; } else { temp += "<td>" + value[i]["birth_date"] + "</td>"; }
+							temp += "<td>" + value[i]["work_count"] + "</td>";
+							if (value[i]["top_subjects"] === undefined) { temp += "<td>" + "--" + "</td>"; } else { temp += "<td>" + value[i]["top_subjects"] + "</td></tr>"; }
 
-				error: function (error) {
-					console.log(`Error ${error}`);
-				}
-			});
-		}
-
-
-							 
-
-//--------------------------------------------------------------------------------------------------------
-function fun2(a)
-{  	
-	let u ='https://openlibrary.org/search/authors.json?q=';
-	let URL = u+a.innerText;
-	ajaxCall1(URL);
-		function ajaxCall1(URL) {
-			$.ajax({
-
-				url: URL ,
-				type: "GET",
-				success: function (data) {									
-				
-							
-		for (const [key, value] of Object.entries(data))
-		{	
-			if (key == "numFound" && value == 0){document.getElementById("msg").innerHTML = "No Author's are available in this name "; }	
-
-			else{
-				if (key == "docs")   {					
-				for (var i=0;i<value.length;i++) {
-
-					document.getElementById("name").innerHTML = value[i]["name"];
-					document.getElementById("type").innerHTML = value[i]["type"];
-					document.getElementById("work_count").innerHTML = value[i]["work_count"];
-					document.getElementById("_version_").innerHTML = value[i]["_version_"];
-					let date;
-                    if( value[i]["birth_date"] === undefined){date = "--";}else{date= value[i]["birth_date"];}
-					document.getElementById("birth_date").innerHTML = date;
-					document.getElementById("top_work").innerHTML = value[i]["top_work"];		
-                      break;
-										}
-                          
 						}
+
+					}
+				}
+
 			}
 
+			document.getElementById("data").innerHTML = temp;
+
+		},
+
+
+		error: function (error) {
+			console.log(`Error ${error}`);
 		}
-		
-				},
+	});
+}
 
 
-				error: function (error) {
-					console.log(`Error ${error}`);
+
+
+//--------------------------------------------------------------------------------------------------------
+function fun2(a) {
+	myfunction();
+	let u = 'https://openlibrary.org/search/authors.json?q=';
+	let URL = u + a.innerText;
+	ajaxCall1(URL);
+	function ajaxCall1(URL) {
+		$.ajax({
+
+			url: URL,
+			type: "GET",
+			success: function (data) {
+
+
+				for (const [key, value] of Object.entries(data)) {
+					if (key == "numFound" && value == 0) { document.getElementById("msg").innerHTML = "No Author's are available in this name "; }
+
+					else {
+						if (key == "docs") {
+							for (var i = 0; i < value.length; i++) {
+
+								document.getElementById("name").innerHTML = value[i]["name"];
+								document.getElementById("type").innerHTML = value[i]["type"];
+								document.getElementById("work_count").innerHTML = value[i]["work_count"];
+								document.getElementById("_version_").innerHTML = value[i]["_version_"];
+								let date;
+								if (value[i]["birth_date"] === undefined) { date = "--"; } else { date = value[i]["birth_date"]; }
+								document.getElementById("birth_date").innerHTML = date;
+								document.getElementById("top_work").innerHTML = value[i]["top_work"];
+								break;
+							}
+
+						}
+					}
+
 				}
-			});
-		}
-		
+
+			},
+
+
+			error: function (error) {
+				console.log(`Error ${error}`);
+			}
+		});
 	}
+
+}
+function myfunction() {
+	var element = document.getElementById("loading");
+	if (document.getElementById("data").rows.length == 0) {
+		element.style.display = "none";
+		console.log(document.getElementById("data").rows.length);
+	}
+
+}
+function openPopup() {
+	document.getElementsByid("boxPopup").style.display = "block";
+}
+
+function closePopup() {
+	document.getElementsByClassName("boxPopup").style.display = "none";
+}
+
 //--------------------------------------------------------------------------------------------------------------------
 
