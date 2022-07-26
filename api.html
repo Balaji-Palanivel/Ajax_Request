@@ -21,7 +21,7 @@
 
 </head>
 
-<body onload="fun()">
+<body>
     <br><br>
 
     <!---------------------------------------------------------------------- Search Box ----------------------------------------------->
@@ -35,7 +35,7 @@
                 <div class="search">
                     <i class="fa fa-search"></i>
                     <input type="text" id="cc" class="form-control" placeholder="Search..">
-                    <button onclick="fun(), myfunction()" class="btn btn-primary ">Search</button>
+                    <button onclick="fun(), myfunction()" class="btn btn-primary">Search</button>
 
                 </div>
             </div>
@@ -67,11 +67,16 @@
     </center>
     <br><br><br><br><br><br>
     <!---------------------------------------------------------------------- Author profile----------------------------------------------->
+
+    <div id="fade" class="black_overlay" onclick="closeProfile()">
+        
     <div id="author" id="boxPopup" class="container ">
         <center>
             <div class="page-content page-container" id="page-content">
                 <div class="padding">
-                    <div class="row container d-flex justify-content-center">
+                    <button type="button" class="close anybutton btn-circle btn-xl" onclick="closeProfile()"aria-label="Close"> <span aria-hidden="true">&times;</span>    </button>
+                    
+                    <div class="row d-flex justify-content-center">
                         <div class="col-xl-9 ">
                             <div class="card user-card-full">
                                 <div class="row m-l-0 m-r-0 mb-100">
@@ -122,6 +127,9 @@
             </div>
         </center>
     </div>
+</div>
+</div>
+
     <div class="col-sm-2">
         <button onclick="history.back()" class="x" id="myBtn">Go top</button>
 
@@ -133,3 +141,8 @@
 </body>
 
 </html>
+
+
+
+
+

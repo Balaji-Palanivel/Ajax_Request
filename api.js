@@ -39,7 +39,7 @@ function ajaxCall(URL) {
 
 							temp += "<tr>";
 							temp += "<th>" + i + "</th>";
-							temp += "<td id =" + value[i]['name'] + " onClick=fun2(this),openPopup()> <a href='#author'>" + value[i]["name"] + "</a></td>";
+							temp += "<td id =" + value[i]['name'] + " onClick=fun2(this),document.getElementById('author').style.display='block';document.getElementById('fade').style.display='block'>" + value[i]["name"] + "</td>";
 							temp += "<td>" + value[i]["type"] + "</td>";
 							if (value[i]["birth_date"] === undefined) { temp += "<td>" + "--" + "</td>"; } else { temp += "<td>" + value[i]["birth_date"] + "</td>"; }
 							temp += "<td>" + value[i]["work_count"] + "</td>";
@@ -116,18 +116,17 @@ function fun2(a) {
 function myfunction() {
 	var element = document.getElementById("loading");
 	if (document.getElementById("data").rows.length == 0) {
-		element.style.display = "none";
-		console.log(document.getElementById("data").rows.length);
+		element.style.display = "none";		
 	}
 
 }
-function openPopup() {
-	document.getElementsByid("boxPopup").style.display = "block";
-}
 
-function closePopup() {
-	document.getElementsByClassName("boxPopup").style.display = "none";
+function closeProfile() {
+	
+	document.getElementById("author").style.display="none";
+	document.getElementById("fade").style.display="none";
 }
+ 
 
 //--------------------------------------------------------------------------------------------------------------------
 
